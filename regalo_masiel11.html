@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regalo para Machi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            flex-direction: column;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .flower {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+        .petal {
+            position: absolute;
+            width: 60px;
+            height: 100px;
+            background-color: yellow;
+            border-radius: 50% 50% 0 0;
+            transform-origin: bottom center;
+            transform: rotate(0deg) scale(0);
+            opacity: 0;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+        .petal.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+        .petal:nth-child(1) {
+            transform: rotate(0deg) scale(0);
+        }
+        .petal:nth-child(2) {
+            transform: rotate(45deg) scale(0);
+        }
+        .petal:nth-child(3) {
+            transform: rotate(90deg) scale(0);
+        }
+        .petal:nth-child(4) {
+            transform: rotate(135deg) scale(0);
+        }
+        .petal:nth-child(5) {
+            transform: rotate(180deg) scale(0);
+        }
+        .petal:nth-child(6) {
+            transform: rotate(225deg) scale(0);
+        }
+        .petal:nth-child(7) {
+            transform: rotate(270deg) scale(0);
+        }
+        .petal:nth-child(8) {
+            transform: rotate(315deg) scale(0);
+        }
+        #center {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #clickButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #clickButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hola Machi, te tengo un regalo!</h1>
+    <div class="flower" id="flower">
+        <!-- Pétalos de la flor -->
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <!-- Centro de la flor -->
+        <div id="center"></div>
+    </div>
+    
+    <button id="clickButton">Haz click aquí</button>
+
+    <script>
+        let petalIndex = 0;
+        const petals = document.querySelectorAll('.petal');
+        const button = document.getElementById('clickButton');
+
+        button.addEventListener('click', function() {
+            if (petalIndex < petals.length) {
+                petals[petalIndex].classList.add('visible');
+                petalIndex++;
+            } else {
+                button.disabled = true; // Desactiva el botón cuando la flor esté completa
+            }
+        });
+    </script>
+
+</body>
+</html>
